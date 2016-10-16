@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<link rel=stylesheet href="css/main.css">
+
+<body>
+
+<header>
+	<h1>Directory</h1>
+
+	<div class="search">
+		<h2>Search</h2>
+		<div id="searchForm">
+			<p>Type below to search within the directory for a specific entry.</p>
+			<input type="search" id="search" placeholder="Search for..." />
+		</div>
+	</div>
+
+	<div class="add">
+		<h2>Add New</h2>
+		<p>Click below to add a new person to the directory.</p>
+		<button class="addButton">Add New Person</button>
+
+		<div id="form" style="display: none;">
+			<p>ID: <input type="text" id="id" /></p>
+			<p>First Name: <input type="text" id="firstName" /></p>
+			<p>Last Name: <input type="text" id="lastName" /></p>
+			<p>Birthday: <input type="text" id="birthday" /></p>
+			<p>Bio: <textarea type="text" id="bio"></textarea></p>
+			<p><button type="submit" id="save">Save</button>
+			<button id="cancel">Cancel</button></p>
+		</div>
+	</div>
+</header>
+
+<div id="result"></div>
+
+<script src="lib/scripts.js"></script>
+
+</body>
+</html>

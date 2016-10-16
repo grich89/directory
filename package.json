@@ -1,0 +1,23 @@
+{
+  "name": "gleg",
+  "version": "1.0.0",
+  "description": "Greg's dev environment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gulp",
+    "dev"
+  ],
+  "author": "Greg Rich",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.12.8",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-minify": "0.0.11",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-sass": "^2.3.1"
+  }
+}
