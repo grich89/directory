@@ -1,20 +1,29 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: Helvetica, Arial, sans-serif; }
+  font-family: Helvetica, Arial, sans-serif;
+  color: #222; }
 
 /* Header styles */
 header {
   text-align: center;
-  background: #eee;
-  padding: 20px;
-  overflow: auto; }
+  background: #fff;
+  overflow: auto;
+  padding-bottom: 30px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4); }
   header h1 {
     margin-top: 0;
+    display: block;
+    background: #ccc;
+    background-image: linear-gradient(to bottom right, #336600, #ccc);
+    padding: 20px;
     font-size: 1.7em; }
-  header .search, header .add {
-    width: 50%;
-    float: left; }
+  header .container {
+    max-width: 1000px;
+    margin: 0 auto; }
+    header .container .search, header .container .add {
+      width: 50%;
+      float: left; }
 
 /* Form styles */
 input, textarea {
@@ -24,21 +33,66 @@ input, textarea {
   font-size: 16px; }
 
 button {
-  background: #336600;
-  padding: 9px 12px;
-  font-size: 16px;
   color: #fff;
   border: 0px;
-  border-radius: 3px; }
+  background: #333;
+  padding: 9px 12px;
+  font-size: 16px;
+  border-radius: 3px;
+  cursor: pointer; }
+  button:hover {
+    opacity: 0.7; }
+
+#form {
+  left: 0px;
+  position: absolute;
+  width: 100%;
+  background: rgba(255, 255, 153, 0.6);
+  top: 0px; }
+  #form .form-inner {
+    display: table;
+    height: 100vh;
+    width: 100%; }
+    #form .form-inner .fields {
+      display: table-cell;
+      vertical-align: middle; }
+      #form .form-inner .fields input, #form .form-inner .fields textarea {
+        width: 300px;
+        font-size: 14px;
+        background: rgba(255, 255, 255, 0.8); }
+        #form .form-inner .fields input:hover, #form .form-inner .fields input:focus, #form .form-inner .fields textarea:hover, #form .form-inner .fields textarea:focus {
+          background: white; }
+      #form .form-inner .fields textarea {
+        height: 100px; }
+      #form .form-inner .fields button#cancel {
+        background: red; }
 
 /* Entry styles */
-.entry {
-  float: left;
-  width: 50%;
-  padding: 20px;
-  box-sizing: border-box; }
-  .entry:nth-of-type(odd) {
-    clear: both; }
-  .entry .inner {
-    border: 1px solid #ccc;
-    padding: 0px 10px; }
+.entries {
+  background-image: linear-gradient(to bottom left, #336600, #ccc);
+  padding: 1em; }
+  .entries #result {
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: auto; }
+    .entries #result .entry {
+      float: left;
+      width: 50%;
+      padding: 1em;
+      box-sizing: border-box; }
+      .entries #result .entry:nth-of-type(odd) {
+        clear: both; }
+      .entries #result .entry .inner {
+        background: #fff;
+        border-radius: 3px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
+        padding: 5px 15px;
+        min-height: 300px; }
+        .entries #result .entry .inner.new {
+          background: #FFFF99; }
+        .entries #result .entry .inner strong {
+          display: inline-block;
+          width: 120px; }
+          .entries #result .entry .inner strong.bio {
+            width: auto;
+            margin-right: 10px; }
