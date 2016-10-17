@@ -1,6 +1,6 @@
 var myDirectory = (function() {
-	
 	var $ = jQuery.noConflict();
+
 	//Retrieve JSON object from git
 	var xmlhttp = new XMLHttpRequest();
 	var url = "https://gist.githubusercontent.com/anonymous/d3b470b271c39a70fada/raw/1665d41dfe70ab12981b737a71263b33c93dbf55/people.json";
@@ -56,9 +56,18 @@ var myDirectory = (function() {
 		                   '<br /><strong>Birthday: </strong>' + birthday + '</p>' + 
 		                   '<p><strong class="bio">Bio: </strong>' + bio + '</p></div>';
 		// Append the div to the result div
-	    var div = document.getElementById("result");
-	    div.appendChild(result);
-	    div.insertBefore(result, div.childNodes[0]);
+		// Display error if first/last name are missing
+		var div = document.getElementById("result");
+		var error = document.getElementById("saveOrCancel");
+		var errorText = document.createElement('p');
+		errorText.className = 'error';
+		errorText.innerHTML = '<strong>First name and last name are required.</strong>';
+	    if (firstName.length > 0 && lastName.length > 0) {
+		    div.appendChild(result);
+		    div.insertBefore(result, div.childNodes[0]);
+		} else {
+			error.appendChild(errorText);
+		}
 	}
 
 	//Reset form when cancel button is clicked
@@ -72,6 +81,7 @@ var myDirectory = (function() {
 		for (i = 0; i < fields.length; i++) {
 			fields[i].value = "";
 		}
+		// Toggle form with jQuery
 		$('#form').hide('fast');
 	}
 

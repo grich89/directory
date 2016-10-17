@@ -59,10 +59,20 @@ button {
 
 #form {
 	left: 0px;
-	position: absolute;
+	position: fixed;
 	width: 100%;
 	background: rgba($yellow, 0.6);
 	top: 0px;
+	.close {
+		position: absolute;
+		top: 20px;
+		right: 40px;
+		font-size: 28px;
+		cursor: pointer;
+		&:hover {
+			color: $green;
+		}
+	}
 	.form-inner {
 		display: table;
 		height: 100vh;
@@ -84,6 +94,11 @@ button {
 			button#cancel {
 				background: red;
 			}
+			#saveOrCancel p:last-of-type {
+				text-shadow: 0px 0px 5px rgba(0,0,0,0.4);
+				color: red;
+				padding: 5px;
+			}
 		}
 	}
 }
@@ -103,11 +118,10 @@ button {
 			padding: 1em;
 			box-sizing: border-box;
 			&:nth-of-type(odd) {
-				clear: both;
+				//clear: both;
 			}
 			.inner {
 				background: #fff;
-				border-radius: 3px;
 				box-shadow: 0px 0px 15px rgba(0,0,0,0.4);
 				padding: 5px 15px;
 				min-height: 300px;
@@ -119,8 +133,30 @@ button {
 					width: 120px;
 					&.bio {
 						width: auto;
-						margin-right: 10px;
+						margin-right: 5px;
 					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	header {
+		.container {
+			.search, .add {
+				width: 100%;
+				float: none;
+			}
+		}
+	}
+	.entries {
+		#result {
+			.entry {
+				width: 100%;
+				float: none;
+				.inner {
+					min-height: auto;
 				}
 			}
 		}

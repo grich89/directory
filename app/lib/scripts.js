@@ -1,6 +1,6 @@
 var myDirectory = (function() {
-	
 	var $ = jQuery.noConflict();
+
 	//Retrieve JSON object from git
 	var xmlhttp = new XMLHttpRequest();
 	var url = "https://gist.githubusercontent.com/anonymous/d3b470b271c39a70fada/raw/1665d41dfe70ab12981b737a71263b33c93dbf55/people.json";
@@ -30,10 +30,14 @@ var myDirectory = (function() {
 		document.getElementById("result").innerHTML = build;
 	}
 
-	//Trigger form to display on button click
-	var element = document.getElementsByClassName('addButton')[0];
-	element.addEventListener("click", function(e) {
+	//Open/close form
+	var addButton = document.getElementsByClassName('addButton')[0];
+	var close = document.getElementsByClassName('close')[0];
+	addButton.addEventListener("click", function(e) {
 		$('#form').toggle('fast');
+	}, false);
+	close.addEventListener("click", function(f) {
+		$('#form').hide('fast');
 	}, false);
 
 	//Retrieve data from form
@@ -56,12 +60,21 @@ var myDirectory = (function() {
 		                   '<br /><strong>Birthday: </strong>' + birthday + '</p>' + 
 		                   '<p><strong class="bio">Bio: </strong>' + bio + '</p></div>';
 		// Append the div to the result div
-	    var div = document.getElementById("result");
-	    div.appendChild(result);
-	    div.insertBefore(result, div.childNodes[0]);
+		// Display error if first/last name are missing
+		var div = document.getElementById("result");
+		var error = document.getElementById("saveOrCancel");
+		var errorText = document.createElement('p');
+		errorText.className = 'error';
+		errorText.innerHTML = 'First/last name required.';
+	    if (firstName.length > 0 && lastName.length > 0) {
+		    div.appendChild(result);
+		    div.insertBefore(result, div.childNodes[0]);
+		} else {
+			error.appendChild(errorText);
+		}
 	}
 
-	//Reset form when cancel button is clicked
+	//Close and reset form when cancel button is clicked
 	function cancel () {
 	    var id = document.getElementById("id");
 	    var firstName = document.getElementById("firstName");
@@ -75,15 +88,15 @@ var myDirectory = (function() {
 		$('#form').hide('fast');
 	}
 
-	//Listen for save and cancel button clicks
+	//Listen for save and cancel events
 	saveMe.addEventListener('click', save, true);
 	cancelMe.addEventListener('click', cancel, true);
 
-	//Search form (time for some jQuery)
-    $('#search').keyup(function(e) {
+	//Search form
+    $('#search').keyup(function(search) {
 	    //Create regular expression
-	    var regEx = new RegExp($.map($(this).val().trim().split(' '), function(v) {
-	        return '[a-zA-Z0-9](?=.*?' + v + ')';
+	    var regEx = new RegExp($.map($(this).val().trim().split(' '), function(results) {
+	        return '[a-zA-Z0-9](?=.*?' + results + ')';
 	    }).join(''), 'i');
 	    //Filter list items with regEx
 	    $('#result .entry').hide().filter(function() {
