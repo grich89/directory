@@ -30,10 +30,14 @@ var myDirectory = (function() {
 		document.getElementById("result").innerHTML = build;
 	}
 
-	//Trigger form to display on button click
-	var element = document.getElementsByClassName('addButton')[0];
-	element.addEventListener("click", function(e) {
+	//Open/close form
+	var addButton = document.getElementsByClassName('addButton')[0];
+	var close = document.getElementsByClassName('close')[0];
+	addButton.addEventListener("click", function(e) {
 		$('#form').toggle('fast');
+	}, false);
+	close.addEventListener("click", function(f) {
+		$('#form').hide('fast');
 	}, false);
 
 	//Retrieve data from form
@@ -61,7 +65,7 @@ var myDirectory = (function() {
 		var error = document.getElementById("saveOrCancel");
 		var errorText = document.createElement('p');
 		errorText.className = 'error';
-		errorText.innerHTML = '<strong>First name and last name are required.</strong>';
+		errorText.innerHTML = 'First/last name required.';
 	    if (firstName.length > 0 && lastName.length > 0) {
 		    div.appendChild(result);
 		    div.insertBefore(result, div.childNodes[0]);
@@ -70,7 +74,7 @@ var myDirectory = (function() {
 		}
 	}
 
-	//Reset form when cancel button is clicked
+	//Close and reset form when cancel button is clicked
 	function cancel () {
 	    var id = document.getElementById("id");
 	    var firstName = document.getElementById("firstName");
@@ -81,19 +85,18 @@ var myDirectory = (function() {
 		for (i = 0; i < fields.length; i++) {
 			fields[i].value = "";
 		}
-		// Toggle form with jQuery
 		$('#form').hide('fast');
 	}
 
-	//Listen for save and cancel button clicks
+	//Listen for save and cancel events
 	saveMe.addEventListener('click', save, true);
 	cancelMe.addEventListener('click', cancel, true);
 
-	//Search form (time for some jQuery)
-    $('#search').keyup(function(e) {
+	//Search form
+    $('#search').keyup(function(search) {
 	    //Create regular expression
-	    var regEx = new RegExp($.map($(this).val().trim().split(' '), function(v) {
-	        return '[a-zA-Z0-9](?=.*?' + v + ')';
+	    var regEx = new RegExp($.map($(this).val().trim().split(' '), function(results) {
+	        return '[a-zA-Z0-9](?=.*?' + results + ')';
 	    }).join(''), 'i');
 	    //Filter list items with regEx
 	    $('#result .entry').hide().filter(function() {
