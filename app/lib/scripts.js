@@ -66,7 +66,7 @@ var myDirectory = (function() {
 		var errorText = document.createElement('p');
 			errorText.className = 'error';
 			errorText.innerHTML = 'First/last name required.';
-	    if (firstName.length === 0 && lastName.length === 0) {
+	    if (firstName.length === 0 | lastName.length === 0) {
 			error.appendChild(errorText);
 		} else {
 		    div.appendChild(result);

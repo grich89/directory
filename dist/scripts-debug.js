@@ -53,24 +53,24 @@ var myDirectory = (function() {
 	    var bio = document.getElementById("bio").value;
 	    // Create new div for new entry
 		var result = document.createElement('div');
-		result.className = 'entry';
-		result.innerHTML = '<div class="inner new"><p><strong>ID: </strong>' + id + 
-		                   '<br /><strong>First Name: </strong>' + firstName +
-		                   '<br /><strong>Last Name: </strong>' + lastName + 
-		                   '<br /><strong>Birthday: </strong>' + birthday + '</p>' + 
-		                   '<p><strong class="bio">Bio: </strong>' + bio + '</p></div>';
+			result.className = 'entry';
+			result.innerHTML = '<div class="inner new"><p><strong>ID: </strong>' + id + 
+			                   '<br /><strong>First Name: </strong>' + firstName +
+			                   '<br /><strong>Last Name: </strong>' + lastName + 
+			                   '<br /><strong>Birthday: </strong>' + birthday + '</p>' + 
+			                   '<p><strong class="bio">Bio: </strong>' + bio + '</p></div>';
 		// Append the div to the result div
 		// Display error if first/last name are missing
 		var div = document.getElementById("result");
 		var error = document.getElementById("saveOrCancel");
 		var errorText = document.createElement('p');
-		errorText.className = 'error';
-		errorText.innerHTML = 'First/last name required.';
-	    if (firstName.length > 0 && lastName.length > 0) {
+			errorText.className = 'error';
+			errorText.innerHTML = 'First/last name required.';
+	    if (firstName.length === 0 && lastName.length === 0) {
+			error.appendChild(errorText);
+		} else {
 		    div.appendChild(result);
 		    div.insertBefore(result, div.childNodes[0]);
-		} else {
-			error.appendChild(errorText);
 		}
 	}
 
@@ -82,9 +82,9 @@ var myDirectory = (function() {
 	    var birthday = document.getElementById("birthday");
 	    var bio = document.getElementById("bio");
 	    var fields = [id, firstName, lastName, birthday, bio];
-		for (i = 0; i < fields.length; i++) {
-			fields[i].value = "";
-		}
+			for (i = 0; i < fields.length; i++) {
+				fields[i].value = "";
+			}
 		$('#form').hide('fast');
 	}
 

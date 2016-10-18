@@ -30,7 +30,8 @@ input, textarea {
   border: 1px solid #336600;
   border-radius: 3px;
   padding: 7px;
-  font-size: 16px; }
+  font-size: 16px;
+  font-family: Helvetica, Arial, sans-serif; }
 
 button {
   color: #fff;
